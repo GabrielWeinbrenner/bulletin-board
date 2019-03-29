@@ -22,13 +22,13 @@ class note extends Component {
         alert('removing note')
     }
     save(){
-        alert('save')
+        alert(this._newText.value)
     }
     renderForm(){
         return(
             <div className="note">
                 <form>
-                    <textarea />
+                    <textarea ref = {input => this._newText = input}/>
                     <button onClick = {this.save}>Save</button>
                 </form>
             </div>
