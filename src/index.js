@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Note from "./note";
+import Board from "./board";
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<Note />, document.getElementById('root'));
+ReactDOM.render(<Board />, document.getElementById('root'));
 
 serviceWorker.unregister();
