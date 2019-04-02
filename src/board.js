@@ -1,13 +1,14 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import Note from './note'
 
 class Board extends Component {
-    constructor(props){
+    constructor(props) {
         super(props)
+
+        /* dynamic and interactive data */
         this.state = {
-            notes: [
-                {
-                    id: 33, 
+            notes: [{
+                    id: 33,
                     note: 'Call Lisa'
                 },
                 {
@@ -18,18 +19,27 @@ class Board extends Component {
         }
         this.eachNote = this.eachNote.bind(this)
     }
-    eachNote(note, i){
-        return (
-            <Note key={i}
-                index={i}>
-                {note.note}
+    update(newText, i) {
+        this.setState(prevState => ({
+            notes: prevState.notes.map(
+                note => (note.id !== i) ? note /* If note updating note then return as is */  
+                : {...note, note: newtext }
+            )
+        }))
+    }
+    eachNote(note, i) {
+        /* returns the content of the note itself */
+        return ( <
+            Note key = { i }
+            index = { i } > { note.note } 
             </Note>
         )
     }
-    render(){
-        return (
-            <div className="board">
-                {this.state.notes.map(this.eachNote)}
+    render() {
+        return ( 
+            <div className = "board" >
+            /* Sends an array of notes onto board */
+            { this.state.notes.map(this.eachNote) } 
             </div>
         )
     }
